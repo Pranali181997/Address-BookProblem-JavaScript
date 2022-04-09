@@ -127,6 +127,7 @@ class contact
     }
 }
 
+//function to add contact
 function AddContact(firstName, lastName, address, city, state, zip, phoneNumber, email)
 {
     try
@@ -145,23 +146,33 @@ function AddContact(firstName, lastName, address, city, state, zip, phoneNumber,
     }
 }
 
+//function to edit contact
 function EditContact(firstName, lastName, address, city, state)
 {
     AddressBook.filter(contact=>contact.firstName== firstName && contact.lastName == lastName ).forEach(contact=>{contact.address = address ; contact.city= city ; contact.state= state});
 }
 
+//function to delete contact
 function DeleteContact(firstName, lastName)
 {
     for(let index = 0; index < AddressBook.length; index++)
     {
         if(AddressBook[index].firstName == firstName && AddressBook[index].lastName==lastName)
         {
+             //splice method removes item from an array by taking index value
             AddressBook.splice(index,1);
         }
     }   
 }
 
-//UC 4,5 - Edit contact method , Delete contact method
+//function to search contact by city or state
+function SearchByCityAndState(city, state)
+{
+    let sortByCity = AddressBook.filter(contact=>contact.city == city && contact.state == state);
+    return sortByCity;
+}
+
+//UC 4,5 ,8 - Edit contact method , Delete contact method
 function Delete()
 {
     console.log("Hello, Welcome To Address Book Using Javascript!")
@@ -185,7 +196,12 @@ function Delete()
     DeleteContact("Ramya", "Uday");
     console.log("Contact deleted successfully!")
     AddressBook.forEach(contact=>console.log(contact.toString()));
+    //Get contacts of a city and state
+    console.log("-----------------Searching by city---------------");
+    let cityArray = SearchByCityAndState("Bandits", "Jodhpur");
+    cityArray.forEach(contact=>console.log(contact.toString()));
 }
+
 let AddressBook = new Array();
 Delete();
 
