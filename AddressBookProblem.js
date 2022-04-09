@@ -160,3 +160,6 @@ function Delete() {
 }
 let AddressBook = new Array();
 Delete();
+//UC-6 Finding out the size  of array using reduce fuction
+let addressBookCount=AddressBook.reduce((count,_contact)=>count=count+1, 0);
+console.log("Count od address book contacts are : "+addressBookCount)

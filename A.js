@@ -1,1 +1,0 @@
-AddressBook.forEach(contact=>console.log(contact.toString()));
